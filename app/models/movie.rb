@@ -9,10 +9,8 @@ class Movie < ActiveRecord::Base
     begin
       Tmdb::Api.key("f4702b08c0ac6ea5b51425788bb26562")
       movies = Tmdb::Movie.find(string)
-      #debugger
       result = []
       return result if movies == nil
-      #debugger
       movies.each do |movie|
         description = Tmdb::Movie.detail(movie.id)['overview']
         
@@ -34,7 +32,6 @@ class Movie < ActiveRecord::Base
     begin
       Tmdb::Api.key("f4702b08c0ac6ea5b51425788bb26562")
       tmdb_id = Integer(tmdb_id)
-      #debugger
       details = Tmdb::Movie.detail(tmdb_id)
       Movie.create!({description: details["overview"], release_date:details["release_date"],
         title:details["title"], rating: Movie.all_ratings.sample

@@ -62,7 +62,6 @@ class MoviesController < ApplicationController
   end
   
   def search_tmdb
-    #debugger
     @search_term = params[:search_terms]
     if @search_term == nil or @search_term == ""
       flash[:warning] = "Invalid search term"
